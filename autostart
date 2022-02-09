@@ -1,6 +1,12 @@
 #!/usr/bin/bash
 
 # this is a simple config for herbstluftwm
+#ff0f1925 #darkblue
+#ff3a558c #lightblue
+#ff162113 #darkgreen
+#ff676a45 #lightgreen
+#ff412521 #darkcoat
+#ff5d3232 #lightcoat
 
 hc() {
     herbstclient "$@"
