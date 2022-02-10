@@ -2,6 +2,14 @@ body{
 	font-size: 2rem;
 	color: white;
 	background-image: url('/static/media/wallpaper.jpg');
+	border-left: 5px solid #0f1925;
+	border-right: 5px solid #0f1925;
+	border-bottom: 5px solid #0f1925;
+	
+}
+.panel{
+	border-bottom: 5px solid #0f1925;
+	height: 1rem;
 }
 .container{
 	background-color: rgba(15, 25, 37, 0.7);
