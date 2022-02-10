@@ -1,0 +1,20 @@
+body{
+	font-size: 2rem;
+	color: white;
+	background-image: url('/static/media/wallpaper.jpg');
+}
+.container{
+	background-color: rgba(15, 25, 37, 0.7);
+	min-height: 800px;
+	margin-top: 5%;
+	padding-top: 2%;
+}
+
+.container .dashboard .btn{
+	width: 100%
+}
+
+.row{
+	margin-bottom: 3rem;
+}
+
