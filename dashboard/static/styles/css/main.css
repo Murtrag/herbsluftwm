@@ -3,17 +3,21 @@ body{
 	color: white;
 	background-image: url('/static/media/wallpaper.jpg');
 	-webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-	border-left: 5px solid #0f1925;
-	border-right: 5px solid #0f1925;
-	border-bottom: 5px solid #0f1925;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+/*	border-left: 5px solid #3a558c; */
+	/* border-right: 5px solid #3a558c; */
+	/* border-bottom: 5px solid #3a558c; */
 	
 }
 .panel{
-	border-bottom: 5px solid #0f1925;
+	/* border-bottom: 5px solid #3a558c; */
 	height: 1rem;
+}
+.hl_frame{
+	 border: 5px solid #3a558c; 
+
 }
 .container{
 	background-color: rgba(15, 25, 37, 0.7);
