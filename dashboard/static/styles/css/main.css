@@ -2,10 +2,14 @@ body{
 	font-size: 2rem;
 	color: white;
 	background-image: url('/static/media/wallpaper.jpg');
+	-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 }
 .container{
 	background-color: rgba(15, 25, 37, 0.7);
-	min-height: 800px;
+	min-height: 600px;
 	margin-top: 5%;
 	padding-top: 2%;
 }
