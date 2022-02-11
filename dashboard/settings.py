@@ -25,15 +25,17 @@ def send_static(path):
 def hello_world():
     system = SysInfo()
     battery = Battery()
-
-    
+    audio = AudioVol()
+    brightness = Brightness()
     context = {
         "battery": {
             "cap": battery.getCapacity(),
             "prediction": battery.getTimePrediction()
             },
         "memory": system.getMemoryUsage(),
-        "load": system.getLoad()
+        "load": system.getLoad(),
+        "brightness": brightness.level,
+        "audio": audio.level
     }
     return render_template('index.html', **context)
 

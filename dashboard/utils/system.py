@@ -43,7 +43,7 @@ class Brightness:
 
     @property
     def level(self):
-        self._cmd(['xbacklight', '-get'])
+        return self._cmd(['xbacklight', '-get']) or 0
 
     @level.setter
     def level(self, value):

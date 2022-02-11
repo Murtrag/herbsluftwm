@@ -63,8 +63,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     ,5000)
 
     // Control elements handle
+    const screenBrightness = document.querySelector('#screenBrightness')
+    const audioVolume = document.querySelector('#audioVolume')
 
-    this.screenBrightness = document.querySelector('#screenBrightness')
+
     screenBrightness.addEventListener('change', (el)=>{
         // console.log(el.target.value)
         fetch('/brightness', {
@@ -76,7 +78,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             .then(data => console.log(data));
     })
 
-    this.audioVolume = document.querySelector('#audioVolume')
     audioVolume .addEventListener('change', (el)=>{
         // console.log(el.target.value)
         fetch('/audio', {
