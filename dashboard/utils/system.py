@@ -47,8 +47,8 @@ class Brightness:
 
     @level.setter
     def level(self, value):
-        print('set brightness to: ', value)
-        return self._cmd(['xbacklight', '-set', value])
+        # print('set brightness to: ', value)
+        return float(self._cmd(['xbacklight', '-set', value]))
 
 class AudioVol:
     def __init__(self):
