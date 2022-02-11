@@ -43,12 +43,17 @@ class Brightness:
 
     @property
     def level(self):
-        return self._cmd(['xbacklight', '-get']) or 0
+        return float(str(self._cmd(['xbacklight', '-get']))[2:-3] ) or 0
+        # try:
+        #     return float(str(self._cmd(['xbacklight', '-get']))[2:-3] ) or 0
+        # except Exception as e:
+        #     print('error: ', e)
+        #     print( 'for the vallue: {', str(self._cmd(['xbacklight', '-get']))[2:-3], '}' )# or 0
+
 
     @level.setter
     def level(self, value):
-        # print('set brightness to: ', value)
-        return float(self._cmd(['xbacklight', '-set', value]))
+        self._cmd(['xbacklight', '-set', value])
 
 class AudioVol:
     def __init__(self):
