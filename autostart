@@ -9,7 +9,7 @@
 #5d3232 #lightcoat
 
 #console xfce4-terminal
-
+# python3 config.py
 hc() {
     herbstclient "$@"
 }

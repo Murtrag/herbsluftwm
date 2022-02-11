@@ -63,6 +63,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     ,5000)
 
     // Control elements handle
+
     this.screenBrightness = document.querySelector('#screenBrightness')
     screenBrightness.addEventListener('change', (el)=>{
         // console.log(el.target.value)
@@ -70,6 +71,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             method: 'PUT', 
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify({'brightness': el.target.value})
+        })
+            .then(response => response.json())
+            .then(data => console.log(data));
+    })
+
+    this.audioVolume = document.querySelector('#audioVolume')
+    audioVolume .addEventListener('change', (el)=>{
+        // console.log(el.target.value)
+        fetch('/audio', {
+            method: 'PUT', 
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify({'audio': el.target.value})
         })
             .then(response => response.json())
             .then(data => console.log(data));

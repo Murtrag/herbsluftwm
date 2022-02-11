@@ -8,7 +8,8 @@ from flask import (
 from utils.system import (
     Battery,
     SysInfo,
-    Brightness
+    Brightness,
+    AudioVol
 )
 from utils.dashboard_validation import stat_chain
 
@@ -51,3 +52,11 @@ def change_brightness():
     brightness = Brightness()
     brightness.level = request.get_json().get('brightness')
     return {'brightness': brightness.level}
+
+# Audio volume
+@app.route('/audio', methods=['PUT'])
+def change_audio_vol():
+    print(request.get_json().get('audio'))
+    audio = AudioVol()
+    audio.level = request.get_json().get('audio')
+    return {'audio': audio.level}

@@ -50,4 +50,37 @@ class Brightness:
         print('set brightness to: ', value)
         return self._cmd(['xbacklight', '-set', value])
 
+class AudioVol:
+    def __init__(self):
+        self._cmd = self._cmd = subprocess.check_output
+
+    def __strip_level(self, text):
+        return int(re.search('(\d+)%', text).group(1))
+
+    @property
+    def level(self):
+
+        cmd_out = self._cmd(['amixer', 'sget', 'Master'])
+        left_out, right_out = str(cmd_out).split('\\n')[-3:-1]
+
+        left = self.__strip_level(left_out)
+        right = self.__strip_level(right_out)
+
+        response = {
+            'left': re.search('(\d+)%', left_out).group(1),
+            'right': re.search('(\d+)%', right_out).group(1),
+            'avg': round((left + right) / 2, 2)
+        }
+        return response
+
+    @level.setter
+    def level(self, value):
+        print('set brightness to: ', value)
+        self._cmd(['amixer', 'set', 'Master', f'{value}%'])
+
+if '__main__' == __name__:
+    t = AudioVol()
+    # print( t.level )
+    # t.level = 100
+
 
