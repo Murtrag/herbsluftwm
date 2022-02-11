@@ -43,12 +43,10 @@ class Brightness:
 
     @property
     def level(self):
-        return float(str(self._cmd(['xbacklight', '-get']))[2:-3] ) or 0
-        # try:
-        #     return float(str(self._cmd(['xbacklight', '-get']))[2:-3] ) or 0
-        # except Exception as e:
-        #     print('error: ', e)
-        #     print( 'for the vallue: {', str(self._cmd(['xbacklight', '-get']))[2:-3], '}' )# or 0
+        try:
+            return float(str(self._cmd(['xbacklight', '-get']))[2:-3] )
+        except ValueError: #If the device doasn't support this func the command returns None so I can't cast it to float
+            return 100.0
 
 
     @level.setter
