@@ -4,6 +4,9 @@ import subprocess
 
 from random import randint
 
+
+_cmd = subprocess.check_output
+
 class Battery:
     # print('test',  subprocess.check_output(['ls', '-l']) )
     def getCapacity(self):
@@ -17,11 +20,11 @@ class Battery:
     
 
 class SysInfo:
-    def __init__(self):
-        self._cmd = subprocess.check_output
+    # def __init__(self):
+    #   self._cmd = subprocess.check_output
 
     def getMemoryUsage(self, unit="m") -> dict:  
-        cmd_out = str(self._cmd(['free',f'-{unit}']))
+        cmd_out = str(_cmd(['free',f'-{unit}']))
         cmd_sort = re.findall('\d+', cmd_out)
         return {
                 'total_memory': cmd_sort[0],
@@ -38,24 +41,24 @@ class SysInfo:
         return os.getloadavg()
 
 class Brightness:
-    def __init__(self):
-        self._cmd = self._cmd = subprocess.check_output
+    # def __init__(self):
+    #     self._cmd = self._cmd = subprocess.check_output
 
     @property
     def level(self):
         try:
-            return float(str(self._cmd(['xbacklight', '-get']))[2:-3] )
+            return float(str(_cmd(['xbacklight', '-get']))[2:-3] )
         except ValueError: #If the device doasn't support this func the command returns None so I can't cast it to float
             return 100.0
 
 
     @level.setter
     def level(self, value):
-        self._cmd(['xbacklight', '-set', value])
+        _cmd(['xbacklight', '-set', value])
 
 class AudioVol:
-    def __init__(self):
-        self._cmd = self._cmd = subprocess.check_output
+    # def __init__(self):
+    #     self._cmd = self._cmd = subprocess.check_output
 
     def __strip_level(self, text):
         return int(re.search('(\d+)%', text).group(1))
@@ -63,7 +66,7 @@ class AudioVol:
     @property
     def level(self):
 
-        cmd_out = self._cmd(['amixer', 'sget', 'Master'])
+        cmd_out = _cmd(['amixer', 'sget', 'Master'])
         left_out, right_out = str(cmd_out).split('\\n')[-3:-1]
 
         left = self.__strip_level(left_out)
@@ -78,8 +81,8 @@ class AudioVol:
 
     @level.setter
     def level(self, value):
-        print('set brightness to: ', value)
-        self._cmd(['amixer', 'set', 'Master', f'{value}%'])
+        # print('set brightness to: ', value)
+        _cmd(['amixer', 'set', 'Master', f'{value}%'])
 
 if '__main__' == __name__:
     t = AudioVol()

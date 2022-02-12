@@ -1,5 +1,8 @@
 from .system import Battery, SysInfo
 
+battery = Battery()
+system = SysInfo()
+
 class AbstractHandler:
     chain_response = {}
 
@@ -19,44 +22,37 @@ class AbstractHandler:
         return AbstractHandler.chain_response
 
 class MemoryHandler(AbstractHandler):
-    system = SysInfo()
-
     def handle(self, request) -> dict:
         if "memory" in request:
-            print('memory')
-            super().chain_response['memory'] = MemoryHandler.system.getMemoryUsage()
+            super().chain_response['memory'] = system.getMemoryUsage()
         return super().handle(request)
 
 class BatteryLevelHandler(AbstractHandler):
-    battery = Battery()
     def handle(self, request) -> dict:
         if "battery" in request :
-            super().chain_response['battery'] = BatteryLevelHandler.battery.getCapacity()
+            super().chain_response['battery'] = battery.getCapacity()
         return super().handle(request)
 
 class BatteryPredicationHandler(AbstractHandler):
-    battery = Battery()
     def handle(self, request) -> dict:
         if "batteryPrediction" in request :
-            super().chain_response['batteryPrediction'] = BatteryPredicationHandler.battery.getTimePrediction()
+            super().chain_response['batteryPrediction'] = battery.getTimePrediction()
         return super().handle(request)
 
 class LoadHandler(AbstractHandler):
-    system = SysInfo()
-
     def handle(self, request) -> dict:
         if "load" in request:
-            super().chain_response['load'] = LoadHandler.system.getLoad()
+            super().chain_response['load'] = system.getLoad()
         return super().handle(request)
 
 stat_chain = MemoryHandler()
 stat_chain.set_next(
     BatteryLevelHandler()
-).set_next(
-    BatteryPredicationHandler()
-).set_next(
-    LoadHandler()
-)
+    ).set_next(
+        BatteryPredicationHandler()
+        ).set_next(
+            LoadHandler()
+        )
 # test = 'test'
 
 # if "__main__" == __name__:
