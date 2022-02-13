@@ -1,5 +1,6 @@
 import os
 import re
+import json
 import subprocess
 
 from random import randint
@@ -39,6 +40,66 @@ class SysInfo:
 #         pass
     def getLoad(self):
         return os.getloadavg()
+
+    def getDiskInfo(self): #getDiskInfo
+        def collect_data(cmd_out_dev):
+            dev_json = json.loads(cmd_out_dev)['blockdevices']
+            temp = _cmd(['hddtemp']).decode('utf-8')
+            temp_split = re.split('\\n|\:', temp)
+
+            response = list()
+            
+            for dev in dev_json:
+                if dev['type'] == 'disk':
+                    try:
+                        i = temp_split.index(dev['path']) + 2 # +2 because in this list the line with the temperature is two lines further
+                        temperature = re.search(
+                            '(\d)°C',
+                            temp_split[i]
+                        ).groups(1)[0]
+                    except (AttributeError, ValueError):
+                        temperature = None
+                        
+                    response.append({
+                            'name': dev['name'],
+                            'label': dev['label'],
+                            'path': dev['path'],
+                            'size': dev['size'],
+                            'state': dev['state'],
+                            'temp': temperature
+                        })
+            return response
+            
+        cmd_out_dev = _cmd(['lsblk', '-dJO'])
+        out = collect_data(cmd_out_dev)
+
+        # compare with temperatures and display all of them with No Reading if no sensor
+        return out
+
+    def __cmd_sensors_to_dict(self, cmd_out):
+        def get_temp(line):
+            return re.search('\+(\d{1,2})', line).groups(1)[0]
+            
+        cmd_list = str(cmd_out).split('\\n')
+        dict_out = {}
+        last_key = str()
+        for line in cmd_list:
+            if "Adapter:" in line:
+                last_key = line[9:]
+                dict_out[last_key] = {'sensor': [], 'package':[]}
+            if "Package" in line:
+                dict_out[last_key]['package'].append(get_temp(line))
+                continue
+            if "\\xc2\\xb0C" in line: # °C 
+                dict_out[last_key]['sensor'].append(get_temp(line))
+        return dict_out
+            
+        
+
+    def coresTemp(self):
+    # sensors
+        cmd_out = _cmd(['sensors'])
+        return self.__cmd_sensors_to_dict(cmd_out)
 
 class Brightness:
     # def __init__(self):
@@ -85,8 +146,13 @@ class AudioVol:
         _cmd(['amixer', 'set', 'Master', f'{value}%'])
 
 if '__main__' == __name__:
-    t = AudioVol()
+    # t = AudioVol()
     # print( t.level )
     # t.level = 100
+
+    from pprint import pprint
+    t = SysInfo()
+    # pprint(t.coresTemp())
+    pprint( t.getDiskInfo() )
 
 
