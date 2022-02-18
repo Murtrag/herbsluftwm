@@ -41,7 +41,7 @@ class SysInfo:
     def getLoad(self):
         return os.getloadavg()
 
-    def getDiskInfo(self): #getDiskInfo
+    def getDisksInfo(self): #getDiskInfo
         def collect_data(cmd_out_dev):
             dev_json = json.loads(cmd_out_dev)['blockdevices']
             temp = _cmd(['hddtemp']).decode('utf-8')
@@ -153,6 +153,6 @@ if '__main__' == __name__:
     from pprint import pprint
     t = SysInfo()
     # pprint(t.coresTemp())
-    pprint( t.getDiskInfo() )
+    pprint( t.getDisksInfo() )
 
 
