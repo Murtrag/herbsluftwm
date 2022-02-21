@@ -1,0 +1,53 @@
+@import "home";
+@import "hdds";
+@import "nav-tab";
+// @import "networking";
+// @import "panel";
+
+$darkblue: #0f1925;
+$lightblue: #3a558c;
+$darkgreen: #162113;
+$lightgreen: #676a45;
+$darkcoat: #412521;
+$lightcoat: #5d3232;
+
+
+body{
+	font-size: 2rem;
+	color: white;
+	background-image: url('/static/media/wallpaper.jpg');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	/*	border-left: 5px solid $lightblue; */
+	/* border-right: 5px solid $lightblue; */
+	/* border-bottom: 5px solid $lightblue; */
+
+	// Main page container
+	.container{
+		background-color: rgba(15, 25, 37, 0.7);
+		min-height: 600px;
+		/*	margin-top: 5%; */
+		padding-top: 2%;
+	}
+
+	// Top panel which for now is empty
+	.panel{
+		/* border-bottom: 5px solid $lightblue; */
+		height: 1rem;
+	}
+
+
+	// frame around the whole page mimicking the herbst style
+	.hl_frame{
+		border: 5px solid $lightblue; 
+		height: 98%;
+	}
+
+}
+
+
+
+
+
