@@ -15,6 +15,11 @@ from utils.dashboard_validation import stat_chain
 
 app = Flask(__name__)
 
+system = SysInfo()
+battery = Battery()
+audio = AudioVol()
+brightness = Brightness()
+
 # Serve static files
 @app.route('/js/<path:path>')
 def send_static(path):
@@ -22,11 +27,7 @@ def send_static(path):
 
 # Main page
 @app.route('/')
-def hello_world():
-    system = SysInfo()
-    battery = Battery()
-    audio = AudioVol()
-    brightness = Brightness()
+def main():
     context = {
         "battery": {
             "cap": battery.getCapacity(),
@@ -41,7 +42,7 @@ def hello_world():
 
 # APIs
 # Dashboard
-@app.route('/stats', methods=['GET', 'POST'])
+@app.route('/stats', methods=['POST'])
 def get_stats():
     query = request.get_json().get('query')
     return stat_chain.handle(query)
@@ -50,7 +51,7 @@ def get_stats():
 # Brightness
 @app.route('/brightness', methods=['PUT'])
 def change_brightness():
-    print(request.get_json().get('brightness'))
+    # print(request.get_json().get('brightness'))
     brightness = Brightness()
     brightness.level = request.get_json().get('brightness')
     return {'brightness': brightness.level}
@@ -58,7 +59,7 @@ def change_brightness():
 # Audio volume
 @app.route('/audio', methods=['PUT'])
 def change_audio_vol():
-    print(request.get_json().get('audio'))
+    # print(request.get_json().get('audio'))
     audio = AudioVol()
     audio.level = request.get_json().get('audio')
     return {'audio': audio.level}
