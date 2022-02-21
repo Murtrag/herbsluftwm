@@ -1,0 +1,16 @@
+<div class="tab-pane fade" id="hdds" role="tabpanel" aria-labelledby="profile-tab">
+	<div class="row text-center">
+	<style>
+	</style>
+	{% for disk in hdds%}
+		<div class="col-4 text-center">
+			<button class="btn btn-outline-success">
+				{{disk.path}}
+				({% if disk.label %} {{disk.label}} {% else %} --- {% endif %}) <br>
+				Cappacity: {{ disk.size }} <br>
+				Temperature: {% if disk.temp %}{{ disk.temp }}°C {% else %} --- {% endif %}
+			</button>
+		</div>
+	{% endfor %}
+	</div>
+</div>

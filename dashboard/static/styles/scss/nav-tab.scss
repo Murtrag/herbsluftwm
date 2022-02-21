@@ -1,0 +1,34 @@
+#mainTab{
+	max-width: 1320px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: unset;
+	margin-top: 5%;
+
+
+	.active{
+		border-left: unset !important;
+		border-right: unset !important;
+		border-top: 5px solid white !important;
+		border-bottom: unset !important;
+		background-color: rgba(15, 25, 37, 0.7) !important;
+		color: white !important;
+	}
+
+	// Remove unwanted underline in activated tab 
+	.nav-link:focus, .nav-link:hover{
+		border-bottom: 0;
+	}
+
+}
+
+
+// .nav-link {
+// 	     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+// }
+
+/* .navbar.navbar-default .navbar-collapse {
+	    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+} */

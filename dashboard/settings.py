@@ -36,7 +36,8 @@ def main():
         "memory": system.getMemoryUsage(),
         "load": system.getLoad(),
         "brightness": brightness.level,
-        "audio": audio.level
+        "audio": audio.level,
+        "hdds": system.getDisksInfo() 
     }
     return render_template('index.html', **context)
 
