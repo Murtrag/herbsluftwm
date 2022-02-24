@@ -197,3 +197,9 @@ for monitor in $(hc list_monitors | cut -d: -f1) ; do
 done
 
 compton -b #enable opacity
+
+# cd ~/.config/herbstluftwm/dashboard
+source ~/.config/herbstluftwm/dashboard/env/bin/activate
+export FLASK_APP=~/.config/herbstluftwm/dashboard/settings
+flask run &
+google-chrome -kiosk 127.0.0.1:5000
