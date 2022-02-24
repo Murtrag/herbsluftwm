@@ -9,6 +9,8 @@
 		<div class="panel"></div>
 		<div class="hl_frame">
 
+			<div class="container nav-tab_container">
+
 			<ul class="nav nav-tabs" role="tablist" id="mainTab">
 				<li class="nav-item" role="presentation">
 					<button class="nav-link active" id="home-tab" aria-current="page" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Main</button>
@@ -20,8 +22,9 @@
 					<button class="nav-link disabled">Networking</button>
 				</li>
 			</ul>
+			</div>
 
-			<div class="container">
+			<div class="container page_container">
 				<div class= "tab-content" id="myTabcontent">
 					{% include "main.html" %}
 					{% include "hdds.html" %}

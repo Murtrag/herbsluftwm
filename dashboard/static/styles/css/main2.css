@@ -9,14 +9,16 @@
   width: 100%;
 }
 
-#mainTab {
-  max-width: 1320px;
+.nav-tab_container {
+  padding-left: var(--bs-gutter-x, -0.25rem);
+}
+.nav-tab_container #mainTab {
   margin-left: auto;
   margin-right: auto;
   border-bottom: unset;
   margin-top: 5%;
 }
-#mainTab .active {
+.nav-tab_container #mainTab .active {
   border-left: unset !important;
   border-right: unset !important;
   border-top: 5px solid white !important;
@@ -24,7 +26,7 @@
   background-color: rgba(15, 25, 37, 0.7) !important;
   color: white !important;
 }
-#mainTab .nav-link:focus, #mainTab .nav-link:hover {
+.nav-tab_container #mainTab .nav-link:focus, .nav-tab_container #mainTab .nav-link:hover {
   border-bottom: 0;
 }
 
@@ -45,7 +47,7 @@ body {
   /* border-right: 5px solid $lightblue; */
   /* border-bottom: 5px solid $lightblue; */
 }
-body .container {
+body .page_container {
   background-color: rgba(15, 25, 37, 0.7);
   min-height: 600px;
   /*	margin-top: 5%; */

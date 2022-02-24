@@ -1,25 +1,46 @@
-#mainTab{
-	max-width: 1320px;
-	margin-left: auto;
-	margin-right: auto;
-	border-bottom: unset;
-	margin-top: 5%;
+// $container-max-widths: (
+// 	sm: 540px,
+// 	md: 720px,
+// 	lg: 960px,
+// 	xl: 1140px,
+// 	xxl: 1320px
+// 	);
+// @import "../../assets/bootstrap/scss/_variables.scss";
+$container-max-widths: (
+  "sm": 540,
+  "md": 720,
+  "lg": 960,
+  "xl": 1140,
+  "xxl": 1320
+) !default;
+
+.nav-tab_container{
+	padding-left: var(--bs-gutter-x,-0.25rem);
+
+	#mainTab{
+		// max-width: 1320px;
+		// max-width: $container-max-widths;
+		margin-left: auto;
+		margin-right: auto;
+		border-bottom: unset;
+		margin-top: 5%;
 
 
-	.active{
-		border-left: unset !important;
-		border-right: unset !important;
-		border-top: 5px solid white !important;
-		border-bottom: unset !important;
-		background-color: rgba(15, 25, 37, 0.7) !important;
-		color: white !important;
+		.active{
+			border-left: unset !important;
+			border-right: unset !important;
+			border-top: 5px solid white !important;
+			border-bottom: unset !important;
+			background-color: rgba(15, 25, 37, 0.7) !important;
+			color: white !important;
+		}
+
+		// Remove unwanted underline in activated tab 
+		.nav-link:focus, .nav-link:hover{
+			border-bottom: 0;
+		}
+
 	}
-
-	// Remove unwanted underline in activated tab 
-	.nav-link:focus, .nav-link:hover{
-		border-bottom: 0;
-	}
-
 }
 
 
