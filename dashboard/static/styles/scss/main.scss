@@ -12,7 +12,11 @@ $darkcoat: #412521;
 $lightcoat: #5d3232;
 
 
+body::-webkit-scrollbar {
+    display: none;
+}
 body{
+	
 	font-size: 2rem;
 	color: white;
 	background-image: url('/static/media/wallpaper.jpg');
