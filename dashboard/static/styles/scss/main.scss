@@ -13,7 +13,7 @@ $lightcoat: #5d3232;
 
 
 body::-webkit-scrollbar {
-    display: none;
+    display: none; // this doasn't work I need to find a good way to do that @TODO
 }
 body{
 	
