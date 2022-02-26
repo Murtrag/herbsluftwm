@@ -35,6 +35,10 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 } */
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-size: 2rem;
   color: white;
@@ -59,7 +63,7 @@ body .panel {
 }
 body .hl_frame {
   border: 5px solid #3a558c;
-  height: 98%;
+  height: 97.9%;
 }
 
 /*# sourceMappingURL=main2.css.map */
