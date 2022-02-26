@@ -45,7 +45,10 @@ class Battery:
                 # This is for lines which doasn't have pair key:val like title val and a History
                 return {}
 
-        cmd_out = Battery.dummy_bat.strip()
+        # cmd_out = Battery.dummy_bat.strip()
+        # cmd_bat_file = _cmd(['upower','-e', '|', 'grep', '"BAT"']).decode('utf-8')
+        cmd_bat_file = re.search('\s(.+BAT.+)\s', _cmd(['upower','-e']).decode('utf-8')).groups(1)[0]
+        cmd_out = _cmd(['upower', '-i', cmd_bat_file]).decode('utf-8')
         cmd_split = cmd_out.split('\n')
         # cmd_to_dict = {**__split_elems(line) for line in cmd_split}
         cmd_to_dict = dict() 
@@ -207,7 +210,8 @@ if '__main__' == __name__:
 
     t = Battery()
     print(
-        t.getCapacity()
+        t.getCapacity(),
+        t.getTimePrediction()
     )
 
 
