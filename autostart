@@ -202,4 +202,5 @@ compton -b #enable opacity
 source ~/.config/herbstluftwm/dashboard/env/bin/activate
 export FLASK_APP=~/.config/herbstluftwm/dashboard/settings
 flask run &
+sleep 1
 google-chrome -kiosk 127.0.0.1:5000
