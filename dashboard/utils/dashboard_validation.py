@@ -7,8 +7,8 @@ class AbstractHandler:
     chain_response = {}
 
     _next_handler = None
-    def __init__(self):
-        self._chain_response = {}
+    # def __init__(self):
+    #     self._chain_response = {}
 
     def set_next(self, handler):
         self._next_handler = handler
@@ -23,6 +23,8 @@ class AbstractHandler:
 
 class MemoryHandler(AbstractHandler):
     def handle(self, request) -> dict:
+        # print("request: ", request)
+        # breakpoint()
         if "memory" in request:
             super().chain_response['memory'] = system.getMemoryUsage()
         return super().handle(request)
@@ -45,6 +47,12 @@ class LoadHandler(AbstractHandler):
             super().chain_response['load'] = system.getLoad()
         return super().handle(request)
 
+class DisksHandler(AbstractHandler):
+    def handle(self, request) -> dict:
+        if "disks" in request:
+            super().chain_response['disks'] = system.getDisksInfo()
+        return super().handle(request)
+
 stat_chain = MemoryHandler()
 stat_chain.set_next(
     BatteryLevelHandler()
@@ -52,7 +60,9 @@ stat_chain.set_next(
         BatteryPredicationHandler()
         ).set_next(
             LoadHandler()
-        )
+            ).set_next(
+                DisksHandler()
+            )
 # test = 'test'
 
 # if "__main__" == __name__:

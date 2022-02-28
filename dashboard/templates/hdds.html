@@ -5,10 +5,10 @@
 	{% for disk in hdds%}
 		<div class="col-4 text-center">
 			<button class="btn btn-outline-success">
-				{{disk.path}}
-				({% if disk.label %} {{disk.label}} {% else %} --- {% endif %}) <br>
-				Cappacity: {{ disk.size }} <br>
-				Temperature: {% if disk.temp %}{{ disk.temp }}°C {% else %} --- {% endif %}
+				<span class="disk_name"> {{disk.path}}
+				({% if disk.label %} {{disk.label}} {% else %} --- {% endif %}) </span> 
+				<span class="disk_cappacity"> Cappacity: {{ disk.size }} </span>
+				<span class="disk_temperature"> Temperature: {% if disk.temp %}{{ disk.temp }}°C {% else %} --- {% endif %}</span>
 			</button>
 		</div>
 	{% endfor %}

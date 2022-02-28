@@ -28,7 +28,15 @@ def send_static(path):
 # Main page
 @app.route('/')
 def main():
+# bgcolor=$(hc get frame_border_normal_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
+# selbg=$(hc get window_border_active_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
+# selfg='#101010'
     context = {
+        "panel":{
+            "bgcolor": "green",
+            "selbg": "orange",
+            "selfg": "blue"
+        },
         "battery": {
             "cap": battery.getCapacity(),
             "prediction": battery.getTimePrediction()
@@ -46,6 +54,7 @@ def main():
 @app.route('/stats', methods=['POST'])
 def get_stats():
     query = request.get_json().get('query')
+    # print("query: ", query)
     return stat_chain.handle(query)
     # print(flask.request.values) #.get('user')
 

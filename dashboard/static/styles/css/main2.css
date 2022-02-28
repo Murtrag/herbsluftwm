@@ -8,6 +8,9 @@
 #hdds button {
   width: 100%;
 }
+#hdds button span {
+  display: block;
+}
 
 .nav-tab_container {
   padding-left: var(--bs-gutter-x, -0.25rem);
@@ -60,10 +63,32 @@ body .page_container {
 body .panel {
   /* border-bottom: 5px solid $lightblue; */
   height: 1rem;
+  background-color: #0f1925;
+  font-size: 1rem;
+}
+body .panel > * {
+  position: relative;
+  top: -5px;
+}
+body .panel ul {
+  height: 100%;
+  list-style: none;
+  position: relative;
+  left: -1.3vw;
+}
+body .panel ul li {
+  display: inline-block;
+  width: 1rem;
+}
+body .panel ul li.active {
+  color: black;
+  background-color: #5d3232;
 }
 body .hl_frame {
   border: 5px solid #3a558c;
   height: 97.9%;
+  position: relative;
+  z-index: 999;
 }
 
 /*# sourceMappingURL=main2.css.map */

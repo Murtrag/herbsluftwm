@@ -47,7 +47,10 @@ class Battery:
 
         # cmd_out = Battery.dummy_bat.strip()
         # cmd_bat_file = _cmd(['upower','-e', '|', 'grep', '"BAT"']).decode('utf-8')
-        cmd_bat_file = re.search('\s(.+BAT.+)\s', _cmd(['upower','-e']).decode('utf-8')).groups(1)[0]
+        try:
+            cmd_bat_file = re.search('\s(.+BAT.+)\s', _cmd(['upower','-e']).decode('utf-8')).groups(1)[0]
+        except AttributeError:
+            cmd_bat_file = Battery.dummy_bat
         cmd_out = _cmd(['upower', '-i', cmd_bat_file]).decode('utf-8')
         cmd_split = cmd_out.split('\n')
         # cmd_to_dict = {**__split_elems(line) for line in cmd_split}
@@ -97,7 +100,7 @@ class SysInfo:
     def getDisksInfo(self): #getDiskInfo
         def collect_data(cmd_out_dev):
             dev_json = json.loads(cmd_out_dev)['blockdevices']
-            temp = _cmd(['hddtemp']).decode('utf-8')
+            temp = _cmd(['hddtemp'], stderr=subprocess.DEVNULL).decode('utf-8')
             temp_split = re.split('\\n|\:', temp)
 
             response = list()
@@ -114,12 +117,12 @@ class SysInfo:
                         temperature = None
                         
                     response.append({
-                            'name': dev['name'],
-                            'label': dev['label'],
+                            'name': dev['name'] or '---',
+                            'label': dev['label'] or '---',
                             'path': dev['path'],
                             'size': dev['size'],
                             'state': dev['state'],
-                            'temp': temperature
+                            'temp': temperature or '---'
                         })
             return response
             

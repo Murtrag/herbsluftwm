@@ -40,6 +40,27 @@ body{
 	.panel{
 		/* border-bottom: 5px solid $lightblue; */
 		height: 1rem;
+		background-color: #0f1925;
+		font-size:1rem;
+		> *{
+			position: relative;
+			top:-5px
+		}
+		ul{
+			height:100%;
+			list-style: none;
+			position: relative;
+			left: -1.3vw;
+
+			li{
+				display: inline-block;
+				width: 1rem;
+			}
+			li.active{
+				color: black;
+				background-color: #5d3232;
+			}
+		}
 	}
 
 
@@ -47,6 +68,8 @@ body{
 	.hl_frame{
 		border: 5px solid $lightblue; 
 		height: 97.9%;
+		position: relative;
+		z-index: 999;
 	}
 
 }

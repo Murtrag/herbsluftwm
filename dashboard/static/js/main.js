@@ -55,16 +55,17 @@ class ControlProporties{
 window.addEventListener('DOMContentLoaded', (event) => {
     // Dash board update
     let dashBoard = new DashBoard();
-    const updateDashboard = setInterval(
-    async ()=>{
-         const stats = await dashBoard.getStats(["battery", "load", "memory", "batteryPrediction"])
-         dashBoard.updateAllStats(stats)
-    }
-    ,5000)
+
+    // const updateDashboard = setInterval(
+    // async ()=>{
+    //      const stats = await dashBoard.getStats(["battery", "load", "memory", "batteryPrediction"])
+    //      dashBoard.updateAllStats(stats)
+    // }
+    // ,5000)
 
     // Control elements handle
-    const screenBrightness = document.querySelector('#screenBrightness')
-    const audioVolume = document.querySelector('#audioVolume')
+    // const screenBrightness = document.querySelector('#screenBrightness')
+    // const audioVolume = document.querySelector('#audioVolume')
 
 
     screenBrightness.addEventListener('change', (el)=>{
