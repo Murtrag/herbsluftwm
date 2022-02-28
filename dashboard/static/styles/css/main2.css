@@ -64,7 +64,7 @@ body .panel {
   /* border-bottom: 5px solid $lightblue; */
   height: 1rem;
   background-color: #0f1925;
-  font-size: 1rem;
+  font-size: 0.8rem;
   overflow: hidden;
 }
 body .panel > * {
@@ -77,7 +77,7 @@ body .panel ul {
   position: relative;
   left: -1.3vw;
   border-right: 1px solid #5d3232;
-  width: 73%;
+  width: 95%;
 }
 body .panel ul li {
   display: inline-block;

@@ -41,11 +41,11 @@ body{
 		/* border-bottom: 5px solid $lightblue; */
 		height: 1rem;
 		background-color: #0f1925;
-		font-size:1rem;
+		font-size: .8rem;
 		overflow: hidden;
 		> *{
 			position: relative;
-			top:-5px
+			top:-3px
 		}
 		ul{
 			height:100%;
@@ -55,7 +55,7 @@ body{
 
 			//this controls right vert line
 			border-right: 1px solid #5d3232;
-			width: 73%;
+			width: 95%;
 
 			li{
 				display: inline-block;
