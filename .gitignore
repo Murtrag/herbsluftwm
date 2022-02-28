@@ -2,4 +2,5 @@ dashboard/env
 __pycache__/
 **/__pycache__/
 *.pyc
+dashboard/prep_env.sh
 
