@@ -42,6 +42,7 @@ body{
 		height: 1rem;
 		background-color: #0f1925;
 		font-size:1rem;
+		overflow: hidden;
 		> *{
 			position: relative;
 			top:-5px
@@ -52,6 +53,10 @@ body{
 			position: relative;
 			left: -1.3vw;
 
+			//this controls right vert line
+			border-right: 1px solid #5d3232;
+			width: 73%;
+
 			li{
 				display: inline-block;
 				width: 1rem;
@@ -60,6 +65,11 @@ body{
 				color: black;
 				background-color: #5d3232;
 			}
+		}
+		.clock{
+			border-left: 1px solid #5d3232;
+			border-right: 1px solid #5d3232;
+			right: 2vw;
 		}
 	}
 

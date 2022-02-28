@@ -65,6 +65,7 @@ body .panel {
   height: 1rem;
   background-color: #0f1925;
   font-size: 1rem;
+  overflow: hidden;
 }
 body .panel > * {
   position: relative;
@@ -75,6 +76,8 @@ body .panel ul {
   list-style: none;
   position: relative;
   left: -1.3vw;
+  border-right: 1px solid #5d3232;
+  width: 73%;
 }
 body .panel ul li {
   display: inline-block;
@@ -83,6 +86,11 @@ body .panel ul li {
 body .panel ul li.active {
   color: black;
   background-color: #5d3232;
+}
+body .panel .clock {
+  border-left: 1px solid #5d3232;
+  border-right: 1px solid #5d3232;
+  right: 2vw;
 }
 body .hl_frame {
   border: 5px solid #3a558c;
