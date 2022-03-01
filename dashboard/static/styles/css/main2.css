@@ -64,12 +64,12 @@ body .panel {
   /* border-bottom: 5px solid $lightblue; */
   height: 1rem;
   background-color: #0f1925;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   overflow: hidden;
 }
 body .panel > * {
   position: relative;
-  top: -5px;
+  top: -3px;
 }
 body .panel ul {
   height: 100%;
