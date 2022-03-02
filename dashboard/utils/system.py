@@ -5,6 +5,8 @@ import subprocess
 
 from random import randint
 
+# from timer import time_dec
+    
 
 _cmd = subprocess.check_output
 
@@ -100,7 +102,7 @@ class SysInfo:
     def getDisksInfo(self): #getDiskInfo
         def collect_data(cmd_out_dev):
             dev_json = json.loads(cmd_out_dev)['blockdevices']
-            temp = _cmd(['hddtemp'], stderr=subprocess.DEVNULL).decode('utf-8')
+            temp = _cmd(['hddtemp'], stderr=subprocess.DEVNULL).decode('utf-8') # this takes 0.7s!!!!
             temp_split = re.split('\\n|\:', temp)
 
             response = list()
@@ -110,7 +112,7 @@ class SysInfo:
                     try:
                         i = temp_split.index(dev['path']) + 2 # +2 because in this list the line with the temperature is two lines further
                         temperature = re.search(
-                            '(\d)°C',
+                            '(\d+)°C',
                             temp_split[i]
                         ).groups(1)[0]
                     except (AttributeError, ValueError):
@@ -129,7 +131,6 @@ class SysInfo:
         cmd_out_dev = _cmd(['lsblk', '-dJO'])
         out = collect_data(cmd_out_dev)
 
-        # compare with temperatures and display all of them with No Reading if no sensor
         return out
 
     def __cmd_sensors_to_dict(self, cmd_out):
@@ -202,6 +203,7 @@ class AudioVol:
         _cmd(['amixer', 'set', 'Master', f'{value}%'])
 
 if '__main__' == __name__:
+    # import time
     # t = AudioVol()
     # print( t.level )
     # t.level = 100
@@ -211,10 +213,14 @@ if '__main__' == __name__:
     # pprint(t.coresTemp())
     # pprint( t.getDisksInfo() )
 
-    t = Battery()
-    print(
-        t.getCapacity(),
-        t.getTimePrediction()
-    )
-
+    # t = Battery()
+    # print(
+    #     t.getCapacity(),
+    #     t.getTimePrediction()
+    # )
+    # uno =  time.perf_counter_ns() 
+    sys = SysInfo()
+    sys.getDisksInfo()
+    # dos = time.perf_counter_ns()
+    # print(dos - uno)
 
