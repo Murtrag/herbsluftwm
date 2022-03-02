@@ -43,6 +43,7 @@ const BadgeFactory = {
 class Disks {
 	constructor() {
 		this.diskContainer = document.querySelector('#hdds .row');
+		this.requiredStats = ['disks']
 	}
     async fetch(endpoint, [...query]){ //@TODO all fetch api functionality should be exported to separated class
         const resp = await fetch(`/${endpoint}`, {
@@ -53,8 +54,7 @@ class Disks {
         const promise = await resp.json();
         return promise
     }
-    getStats([...stats]) {
-		// console.log(stats)
+    getStats(stats=this.requiredStats) {
         return this.fetch('stats', stats);
     }
 	updateDisks(diskList){
@@ -62,14 +62,9 @@ class Disks {
 		const badges = diskList.map(e=> BadgeFactory.create(e.path, e.label, e.size, e.temp))
 		this.diskContainer.append(...badges)
 	}
+	updateStats({disks}){
+		this.updateDisks(disks);
+	}
 
 }
 
-let disks = new Disks();
-
-const updateDisks = setInterval(
-async ()=>{
-		const fetch_ = await disks.getStats(["disks"])
-		disks.updateDisks(fetch_.disks)
-}
-,5000)

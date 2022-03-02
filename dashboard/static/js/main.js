@@ -5,6 +5,8 @@ class DashBoard {
         this.load = document.querySelector('#load');
         this.memory = document.querySelector('#memoryUsage');
         this.memoryPercentage = document.querySelector('#memoryPercentage');
+
+		this.requiredStats = ["battery", "load", "memory", "batteryPrediction"]
     }
 
     async fetch(endpoint, [...query]){
@@ -16,7 +18,7 @@ class DashBoard {
         const promise = await resp.json();
         return promise
     }
-    getStats([...stats]) {
+getStats(stats=this.requiredStats) {
         // e.g. obj.getStats(["battery", "memory"])
         return this.fetch('stats', stats);
     }
@@ -38,7 +40,7 @@ class DashBoard {
     }
 
 
-    updateAllStats({batteryPrediction, memory, battery, load}){
+    updateStats({batteryPrediction, memory, battery, load}){
         this.updateLoad(load);
         this.updateMemory(memory);
         this.updateBattery(battery);
@@ -53,19 +55,6 @@ class ControlProporties{
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    // Dash board update
-    let dashBoard = new DashBoard();
-
-    // const updateDashboard = setInterval(
-    // async ()=>{
-    //      const stats = await dashBoard.getStats(["battery", "load", "memory", "batteryPrediction"])
-    //      dashBoard.updateAllStats(stats)
-    // }
-    // ,5000)
-
-    // Control elements handle
-    // const screenBrightness = document.querySelector('#screenBrightness')
-    // const audioVolume = document.querySelector('#audioVolume')
 
 
     screenBrightness.addEventListener('change', (el)=>{
