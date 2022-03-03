@@ -2,7 +2,7 @@ class FlowControl{
 	constructor(){
 		this.flow = {
 			element: null,
-			flowId: null,
+			intervalId: null,
 			isOn: false
 		}
 	}
@@ -18,12 +18,16 @@ class FlowControl{
 	}
 
 	stop(){
-		clearInterval(this.flow.flowId);
+		// console.log("stop");
+		clearInterval(this.flow.intervalId);
 		this.flow.isOn = false;
 	}
 	start(){
+		// console.log('start');
 		this.flow = {
-			flowId : this._createFlow(this.flow.element),
+			// ...this.flow,
+			element: this.flow.element,
+			intervalId : this._createFlow(this.flow.element),
 			isOn : false
 		}
 	}
@@ -38,7 +42,7 @@ class FlowControl{
 	changeFlow(activeEl){
 		this.stop();
 		this.flow = {
-			flowId : this._createFlow(activeEl),
+			intervalId : this._createFlow(activeEl),
 			element : activeEl,
 			isOn : true
 		}
@@ -52,12 +56,23 @@ flowControl = new FlowControl();
 const dashBoard = new DashBoard();
 const disks = new Disks();
 
+// nav tab activity
 document.addEventListener("DOMContentLoaded",()=>{
 	flowControl.changeFlow(dashBoard);
 	document.querySelector('#home-tab').addEventListener("click", ()=>{flowControl.changeFlow(dashBoard)})
 	document.querySelector('#hdds-tab') .addEventListener("click", ()=>{flowControl.changeFlow(disks)})
 })
 
+
+// Webbroser activity
 document.addEventListener("visibilitychange", ()=>{
 	flowControl.toggle();
+});
+window.addEventListener('blur', ()=>{
+	console.log('blur')
+	flowControl.stop();
+});
+window.addEventListener('focus', ()=>{
+	console.log("start")
+	flowControl.start();
 });

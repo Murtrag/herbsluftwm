@@ -48,11 +48,11 @@ getStats(stats=this.requiredStats) {
 
     }
 }
-class ControlProporties{
-    constructor(){
-        this.screenBrightness = document.querySelector('#screenBrightness')
-    }
-}
+// class ControlProporties{
+//     constructor(){
+//         this.screenBrightness = document.querySelector('#screenBrightness')
+//     }
+// }
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
