@@ -1,4 +1,4 @@
-from .system import Battery, SysInfo
+from .system import Battery, SysInfo, _cmd
 
 battery = Battery()
 system = SysInfo()
@@ -65,10 +65,16 @@ stat_chain.set_next(
             )
 # test = 'test'
 
-# if "__main__" == __name__:
-#     print(
-#         stat_chain.handle(["memory", "load"])
-#     )
+def is_afk(time_limit=5): 
+    afk_time = int(_cmd(['xssstate', '-i']).decode('utf-8'))
+    return afk_time > time_limit*60000 # 1*60 0000 1minute 
+
+
+if "__main__" == __name__:
+    # print(
+    #     stat_chain.handle(["memory", "load"])
+    # )
+    print( is_afk() )
 
 
 

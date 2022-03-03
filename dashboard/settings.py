@@ -11,7 +11,7 @@ from utils.system import (
     Brightness,
     AudioVol
 )
-from utils.dashboard_validation import stat_chain
+from utils.dashboard_validation import stat_chain, is_afk
 
 app = Flask(__name__)
 
@@ -53,10 +53,11 @@ def main():
 # Dashboard
 @app.route('/stats', methods=['POST'])
 def get_stats():
+    if is_afk(time_limit=1):
+        return {'isAfk': True}
     query = request.get_json().get('query')
-    # print("query: ", query)
-    return stat_chain.handle(query)
-    # print(flask.request.values) #.get('user')
+    response = { **stat_chain.handle(query), 'isAfk': False }
+    return response
 
 # Brightness
 @app.route('/brightness', methods=['PUT'])

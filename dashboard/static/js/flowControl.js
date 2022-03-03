@@ -10,7 +10,9 @@ class FlowControl{
 	_createFlow(object, timeInterval=5){
 		async function getAndUpdateStats(){
 				const fetch_ = await object.getStats();
-				object.updateStats(fetch_);
+				if (fetch_.isAfk === false){
+					object.updateStats(fetch_);
+				}
 		}
 		getAndUpdateStats();
 		const reference = setInterval(getAndUpdateStats, timeInterval * 1000)
