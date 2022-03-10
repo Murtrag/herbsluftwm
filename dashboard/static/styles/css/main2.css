@@ -63,7 +63,7 @@ body .page_container {
 body .panel {
   /* border-bottom: 5px solid $lightblue; */
   height: 1rem;
-  background-color: #0f1925;
+  background-color: var(--theme-bg-color);
   font-size: 0.5rem;
   overflow: hidden;
 }
@@ -76,7 +76,7 @@ body .panel ul {
   list-style: none;
   position: relative;
   left: -1.3vw;
-  border-right: 1px solid #5d3232;
+  border-right: 1px solid var(--theme-active-color);
   width: 95%;
 }
 body .panel ul li {
@@ -85,15 +85,15 @@ body .panel ul li {
 }
 body .panel ul li.active {
   color: black;
-  background-color: #5d3232;
+  background-color: var(--theme-active-color);
 }
 body .panel .clock {
-  border-left: 1px solid #5d3232;
-  border-right: 1px solid #5d3232;
+  border-left: 1px solid var(--theme-active-color);
+  border-right: 1px solid var(--theme-active-color);
   right: 2vw;
 }
 body .hl_frame {
-  border: 5px solid #3a558c;
+  border: 5px solid var(--theme-bg-active-color);
   height: 97.9%;
   position: relative;
   z-index: 999;

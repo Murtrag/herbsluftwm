@@ -4,13 +4,10 @@
 // @import "networking";
 // @import "panel";
 
-$darkblue: #0f1925;
-$lightblue: #3a558c;
-$darkgreen: #162113;
-$lightgreen: #676a45;
-$darkcoat: #412521;
-$lightcoat: #5d3232;
-
+$bg_color: var(--theme-bg-color);
+$bg_active_color: var(--theme-bg-active-color);
+$normal_color: var(--theme-normal-color);
+$active_color: var(--theme-active-color);
 
 body::-webkit-scrollbar {
     display: none; // this doasn't work I need to find a good way to do that @TODO
@@ -40,7 +37,7 @@ body{
 	.panel{
 		/* border-bottom: 5px solid $lightblue; */
 		height: 1rem;
-		background-color: #0f1925;
+		background-color: $bg_color;
 		font-size: .5rem;
 		overflow: hidden;
 		> *{
@@ -54,7 +51,7 @@ body{
 			left: -1.3vw;
 
 			//this controls right vert line
-			border-right: 1px solid #5d3232;
+			border-right: 1px solid $active_color;
 			width: 95%;
 
 			li{
@@ -63,12 +60,12 @@ body{
 			}
 			li.active{
 				color: black;
-				background-color: #5d3232;
+				background-color: $active_color;
 			}
 		}
 		.clock{
-			border-left: 1px solid #5d3232;
-			border-right: 1px solid #5d3232;
+			border-left: 1px solid $active_color;
+			border-right: 1px solid $active_color;
 			right: 2vw;
 		}
 	}
@@ -76,7 +73,7 @@ body{
 
 	// frame around the whole page mimicking the herbst style
 	.hl_frame{
-		border: 5px solid $lightblue; 
+		border: 5px solid $bg_active_color; 
 		height: 97.9%;
 		position: relative;
 		z-index: 999;

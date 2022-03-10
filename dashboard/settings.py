@@ -12,6 +12,7 @@ from utils.system import (
     AudioVol
 )
 from utils.dashboard_validation import stat_chain, is_afk
+from utils.ThemeExtract import colors
 
 app = Flask(__name__)
 
@@ -32,10 +33,13 @@ def main():
 # selbg=$(hc get window_border_active_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
 # selfg='#101010'
     context = {
-        "panel":{
-            "bgcolor": "green",
-            "selbg": "orange",
-            "selfg": "blue"
+        "theme":{
+            "colors": {
+                "theme_bg_color": colors["theme_bg_color"],
+                "theme_bg_active_color": colors["theme_bg_active_color"],
+                "theme_bg_color": colors["theme_normal_color"],
+                "theme_bg_color": colors["theme_active_color"]
+            },
         },
         "battery": {
             "cap": battery.getCapacity(),
