@@ -4,12 +4,14 @@
 	</style>
 	{% for disk in hdds%}
 		<div class="col-4 text-center">
-			<button class="btn btn-outline-success">
-				<span class="disk_name"> {{disk.path}}
-				({% if disk.label %} {{disk.label}} {% else %} --- {% endif %}) </span> 
-				<span class="disk_cappacity"> Cappacity: {{ disk.size }} </span>
-				<span class="disk_temperature"> Temperature: {% if disk.temp %}{{ disk.temp }}°C {% else %} --- {% endif %}</span>
-			</button>
+			{% with 
+				path = disk.path,
+				lable = disk.label,
+				cappacity = disk.size,
+				temperature = disk.temp
+			%}
+				{% include 'components/hdd_tile.htm' %}
+			{% endwith %}
 		</div>
 	{% endfor %}
 	</div>

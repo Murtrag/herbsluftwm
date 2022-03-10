@@ -26,6 +26,7 @@ class FlowControl{
 	}
 	start(){
 		// console.log('start');
+		this.stop();
 		this.flow = {
 			// ...this.flow,
 			element: this.flow.element,

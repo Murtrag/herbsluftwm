@@ -41,6 +41,12 @@ class BatteryPredicationHandler(AbstractHandler):
             super().chain_response['batteryPrediction'] = battery.getTimePrediction()
         return super().handle(request)
 
+class BatteryIconHandler(AbstractHandler):
+    def handle(self, request) -> dict:
+        if "batteryPrediction" in request :
+            super().chain_response['batteryIcon'] = battery.getIconName()
+        return super().handle(request)
+
 class LoadHandler(AbstractHandler):
     def handle(self, request) -> dict:
         if "load" in request:
@@ -59,10 +65,12 @@ stat_chain.set_next(
     ).set_next(
         BatteryPredicationHandler()
         ).set_next(
-            LoadHandler()
+            BatteryIconHandler()
             ).set_next(
-                DisksHandler()
-            )
+                LoadHandler()
+                ).set_next(
+                    DisksHandler()
+                )
 # test = 'test'
 
 def is_afk(time_limit=5): 

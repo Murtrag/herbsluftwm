@@ -1,0 +1,6 @@
+<button class="btn btn-outline-success">
+	<span class="disk_name"> {{disk.path}}
+		({% if disk.label %} {{disk.label}} {% else %} --- {% endif %}) </span>
+	<span class="disk_cappacity"> Cappacity: {{ disk.size }} </span>
+	<span class="disk_temperature"> Temperature: {% if disk.temp %}{{ disk.temp }}°C {% else %} --- {% endif %}</span>
+</button>

@@ -34,7 +34,7 @@ class Battery:
     percentage:          100%
     capacity:            99.5455%
     technology:          lithium-ion
-    icon-name:          'battery-full-charged-symbolic'
+    icon-name:          'battery-empty-symbolic'
   History (rate):
     1645891239	7.157	fully-charged
     '''
@@ -67,7 +67,26 @@ class Battery:
         # return str(randint(0,100))
 
     def getIconName(self):
-        pass
+        # ac-adapter-symbolic
+        # battery-missing-symbolic
+        
+
+        # battery-empty-symbolic
+        # battery-caution-symbolic
+
+        # battery-low-symbolic v
+        # battery-good-symbolic v
+
+        # battery-full-symbolic v
+
+        # battery-caution-charging-symbolic v
+
+        # battery-low-charging-symbolic v
+        # battery-good-charging-symbolic v
+
+        # battery-full-charged-symbolic  V
+        # battery-full-charging-symbolic v
+        return self.__fetch_bat_data()['icon-name'][1:-10]
 
     def getTimePrediction(self):
         # pass
@@ -213,14 +232,15 @@ if '__main__' == __name__:
     # pprint(t.coresTemp())
     # pprint( t.getDisksInfo() )
 
-    # t = Battery()
-    # print(
-    #     t.getCapacity(),
-    #     t.getTimePrediction()
-    # )
+    t = Battery()
+    print(
+        # t.getCapacity(),
+        t.getIconName(),
+        # t.getTimePrediction()
+    )
     # uno =  time.perf_counter_ns() 
-    sys = SysInfo()
-    sys.getDisksInfo()
+    # sys = SysInfo()
+    # sys.getDisksInfo()
     # dos = time.perf_counter_ns()
     # print(dos - uno)
 

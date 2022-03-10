@@ -39,7 +39,8 @@ def main():
         },
         "battery": {
             "cap": battery.getCapacity(),
-            "prediction": battery.getTimePrediction()
+            "prediction": battery.getTimePrediction(),
+            "icon": battery.getIconName()
             },
         "memory": system.getMemoryUsage(),
         "load": system.getLoad(),
