@@ -1,3 +1,4 @@
+import re
 from utils.system import _cmd
 # --theme-bg-color: #0f1925;
 # --theme-bg-active-color: #3a558c;
@@ -5,19 +6,29 @@ from utils.system import _cmd
 # --theme-active-color: #5d3232; /* window frame */
 # bgcolor=$(hc get frame_border_normal_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
 # selbg=$(hc get window_border_active_color|sed 's,^\(\#[0-9a-f]\{6\}\)[0-9a-f]\{2\}$,\1,')
-def _extractVariable(var_name):
-	try:
-		return _cmd(['herbstclient', 'get', var_name]) 
-	except Exception:
-		return "red" #handler for not herbst environment
 
-colors = {
-	'theme_bg_color': _extractVariable('theme.background_color'),
-	'theme_bg_active_color': _extractVariable('frame_bg_active_color'),
-	'theme_normal_color': _extractVariable('theme.normal.color'),
-	'theme_active_color': _extractVariable('theme.active.color'),
+#Grep all theme values
+with open('../autostart') as autostart:
+	autostart_txt = autostart.read()
+	founded_pairs = re.findall('\nhc\s(?:attr|set)\s([a-z._]+)\s(\S+)', autostart_txt)
+	colors = {
+		key:val.strip("'") for key,val in founded_pairs
+	}
 
-}
+# def _extractVariable(var_name):
+	# (\#[0-9a-f]{6}) html color
+# 	try:
+# 		return _cmd(['herbstclient', 'get', var_name]) 
+# 	except Exception:
+# 		return "red" #handler for not herbst environment
+
+# colors = {
+# 	'theme_bg_color': _extractVariable('theme.background_color'),
+# 	'theme_bg_active_color': _extractVariable('frame_bg_active_color'),
+# 	'theme_normal_color': _extractVariable('theme.normal.color'),
+# 	'theme_active_color': _extractVariable('theme.active.color'),
+
+# }
 		
 
 

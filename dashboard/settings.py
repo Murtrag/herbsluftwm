@@ -35,10 +35,10 @@ def main():
     context = {
         "theme":{
             "colors": {
-                "theme_bg_color": colors["theme_bg_color"],
-                "theme_bg_active_color": colors["theme_bg_active_color"],
-                "theme_bg_color": colors["theme_normal_color"],
-                "theme_bg_color": colors["theme_active_color"]
+                "theme_background_color": colors["theme.background_color"],
+                "frame_bg_active_color": colors["frame_bg_active_color"],
+                "theme_normal_color": colors["theme.normal.color"],
+                "theme_active_color": colors["theme.active.color"]
             },
         },
         "battery": {
@@ -52,6 +52,7 @@ def main():
         "audio": audio.level,
         "hdds": system.getDisksInfo() 
     }
+    print(context)
     return render_template('index.html', **context)
 
 # APIs

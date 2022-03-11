@@ -63,7 +63,7 @@ body .page_container {
 body .panel {
   /* border-bottom: 5px solid $lightblue; */
   height: 1rem;
-  background-color: var(--theme-bg-color);
+  background-color: var(--theme-background-color);
   font-size: 0.5rem;
   overflow: hidden;
 }
@@ -93,7 +93,7 @@ body .panel .clock {
   right: 2vw;
 }
 body .hl_frame {
-  border: 5px solid var(--theme-bg-active-color);
+  border: 5px solid var(--frame-bg-active-color);
   height: 97.9%;
   position: relative;
   z-index: 999;

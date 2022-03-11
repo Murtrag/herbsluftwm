@@ -157,8 +157,8 @@ for state in active urgent normal ; do
 done
 hc attr theme.active.outer_width 1
 hc attr theme.background_color '#141414' # Idk what is it for
-feh --no-fehbg --bg-fill ~/.config/herbstluftwm/media/wallpaper.jpg
 # hc attr theme.background_color 'blue' # Idk what is it for
+feh --no-fehbg --bg-fill ~/.config/herbstluftwm/media/wallpaper.jpg
 
 hc set window_gap 0
 hc set frame_padding 0
