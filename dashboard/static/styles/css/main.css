@@ -99,4 +99,8 @@ body .hl_frame {
   z-index: 999;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=main.css.map */

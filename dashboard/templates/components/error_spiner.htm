@@ -1,0 +1,26 @@
+<div title="error message" id="server_error" class="hide">
+	<div class="spinner-border text-primary" role="status">
+	</div>
+	<span class="sr-only">Loading...</span>
+</div>
+<script>
+class ServerError{
+	constructor(){
+		this.serverErrorEl = document.querySelector("#server_error");
+	}
+
+	hide(){
+		this.serverErrorEl.classList.remove("show");
+		this.serverErrorEl.classList.add("hide");
+	}
+
+	show(){
+		this.serverErrorEl.classList.remove("hide");
+		this.serverErrorEl.classList.add("show");
+	}
+
+	addTitleMessage(message){
+		this.serverErrorEl.title = message;
+	}
+}
+</script>

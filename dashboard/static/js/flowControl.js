@@ -1,5 +1,6 @@
 class FlowControl{
 	constructor(){
+		this.serverError = new ServerError();
 		this.flow = {
 			element: null,
 			intervalId: null,
@@ -8,10 +9,16 @@ class FlowControl{
 	}
 
 	_createFlow(object, timeInterval=5){
-		async function getAndUpdateStats(){
-				const fetch_ = await object.getStats();
-				if (fetch_.isAfk === false){
-					object.updateStats(fetch_);
+		const getAndUpdateStats = async ()=>{
+				try{
+					const fetch_ = await object.getStats();
+					if (fetch_.isAfk === false){
+						object.updateStats(fetch_);
+						this.serverError.hide()
+				}
+				}catch(err){
+						this.serverError.show();
+						this.serverError.addTitleMessage(err);
 				}
 		}
 		getAndUpdateStats();
@@ -20,12 +27,10 @@ class FlowControl{
 	}
 
 	stop(){
-		// console.log("stop");
 		clearInterval(this.flow.intervalId);
 		this.flow.isOn = false;
 	}
 	start(){
-		// console.log('start');
 		this.stop();
 		this.flow = {
 			// ...this.flow,
@@ -54,7 +59,7 @@ class FlowControl{
 
 
 
-flowControl = new FlowControl();
+const flowControl = new FlowControl();
 
 const dashBoard = new DashBoard();
 const disks = new Disks();
@@ -72,10 +77,8 @@ document.addEventListener("visibilitychange", ()=>{
 	flowControl.toggle();
 });
 window.addEventListener('blur', ()=>{
-	console.log('blur')
 	flowControl.stop();
 });
 window.addEventListener('focus', ()=>{
-	console.log("start")
 	flowControl.start();
 });
