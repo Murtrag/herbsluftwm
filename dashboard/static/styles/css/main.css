@@ -93,7 +93,7 @@ body .panel .clock {
   right: 2vw;
 }
 body .hl_frame {
-  border: 5px solid var(--frame-bg-active-color);
+  border: var(--frame-transparent-width) solid var(--frame-bg-active-color);
   height: 97.9%;
   position: relative;
   z-index: 999;

@@ -40,6 +40,9 @@ def main():
                 "theme_normal_color": colors["theme.normal.color"],
                 "theme_active_color": colors["theme.active.color"]
             },
+            "dimensions": {
+                "frame_transparent_width": colors["frame_transparent_width"]
+            }
         },
         "battery": {
             "cap": battery.getCapacity(),
