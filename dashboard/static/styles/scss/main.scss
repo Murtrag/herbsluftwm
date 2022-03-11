@@ -9,6 +9,7 @@ $bg_active_color: var(--frame-bg-active-color);
 $normal_color: var(--theme-normal-color);
 $active_color: var(--theme-active-color);
 $frame_transparent_width: var(--frame-transparent-width); 
+$wallpaper: var(--wallpaper);
 
 body::-webkit-scrollbar {
     display: none; // this doasn't work I need to find a good way to do that @TODO
@@ -17,7 +18,7 @@ body{
 	
 	font-size: 2rem;
 	color: white;
-	background-image: url('/static/media/wallpaper.jpg');
+	background-image: $wallpaper;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

@@ -12,7 +12,7 @@ from utils.system import (
     AudioVol
 )
 from utils.dashboard_validation import stat_chain, is_afk
-from utils.ThemeExtract import colors
+from utils.ThemeExtract import colors, wallpaper
 
 app = Flask(__name__)
 
@@ -34,6 +34,7 @@ def main():
 # selfg='#101010'
     context = {
         "theme":{
+            "wallpaper": wallpaper,
             "colors": {
                 "theme_background_color": colors["theme.background_color"],
                 "frame_bg_active_color": colors["frame_bg_active_color"],

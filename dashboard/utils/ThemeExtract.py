@@ -1,3 +1,4 @@
+import os
 import re
 from utils.system import _cmd
 # --theme-bg-color: #0f1925;
@@ -11,9 +12,13 @@ from utils.system import _cmd
 with open('../autostart') as autostart:
 	autostart_txt = autostart.read()
 	founded_pairs = re.findall('\nhc\s(?:attr|set)\s([a-z._]+)\s(\S+)', autostart_txt)
+	# wallpaper = 'file://'+re.findall('\nfeh\s\S+\s\S+\s([\.\~\w\/]*\/(?:[0-9a-zA-Z\._-]+.(?:png|PNG|gif|GIF|jp[e]?g|JP[E]?G)))', autostart_txt)[0].replace('~', os.environ.get('HOME'))
+	_wallpaper_name = re.findall('\nfeh\s\S+\s\S+\s(?:.+)+.(?:\/)(\w+\.(?:png|PNG|gif|GIF|jp[e]?g|JP[E]?G))', autostart_txt)[0]
+	wallpaper = f'/static/media/{_wallpaper_name}'
 	colors = {
 		key:val.strip("'") for key,val in founded_pairs
 	}
+	print(wallpaper)
 
 # def _extractVariable(var_name):
 	# (\#[0-9a-f]{6}) html color

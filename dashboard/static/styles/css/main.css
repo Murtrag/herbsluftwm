@@ -45,7 +45,7 @@ body::-webkit-scrollbar {
 body {
   font-size: 2rem;
   color: white;
-  background-image: url("/static/media/wallpaper.jpg");
+  background-image: var(--wallpaper);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
