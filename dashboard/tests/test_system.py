@@ -68,9 +68,18 @@ class TestSysInfo:
 	def test_coresTemp(self):
 		pass
 
+@pytest.fixture()
+def brightness_resource():
+	brightness = system.Brightness()
+	print("battery: setup")
+	yield brightness 
+	print("battery: teardown ")
+
 class TestBrightness:
 	
-	def test_level_getter(self):
+	def test_level_getter(self, brightness_resource):
+        brightness = brightness_resource.level
+        assert type(brightness) is float, "brightness level should be type of float"
 		pass
 
 	def test_level_setter(self):
