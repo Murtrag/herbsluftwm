@@ -62,20 +62,18 @@ class TestSysInfo:
 
     def test_getMemoryUsage(self, sys_info_resource):
         t = sys_info_resource.getMemoryUsage()
-        breakpoint()
         vital_keys = {"total_memory", "used_memory", "percentage_memory", "total_swap", "used_swap"}
         assert len(t.keys() & vital_keys) == len( vital_keys)
         # Check if all values are numbers
 	
     def test_getLoad(self, sys_info_resource):
         t = sys_info_resource.getLoad()
-        breakpoint()
         assert len(t) == 3, "Load should contain 3 values"
         assert all(type(v) is float for v in t), "Values in load should be float type"
 
     def test_getDisksInfo(self, sys_info_resource):
         t = sys_info_resource.getDisksInfo()
-        assert 1==1
+        assert type(t) is list
 	
     def test__cmd_sensors_to_dict(self, sys_info_resource):
         pass
@@ -84,7 +82,7 @@ class TestSysInfo:
 	
     def test_coresTemp(self, sys_info_resource):
         t = sys_info_resource.coresTemp()
-        assert 1==1
+        assert type(t) is dict
 
 @pytest.fixture()
 def brightness_resource():
