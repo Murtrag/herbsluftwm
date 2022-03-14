@@ -63,7 +63,8 @@ class Battery:
 
     def getCapacity(self):
         # bat_data = self.__fetch_bat_data()
-        return self.__fetch_bat_data()['percentage'][:-1]
+        return self.__fetch_bat_data()['percentage'][:-1] #@TODO battery level must be a number
+
         # return str(randint(0,100))
 
     def getIconName(self):
@@ -210,8 +211,8 @@ class AudioVol:
         right = self.__strip_level(right_out)
 
         response = {
-            'left': re.search('(\d+)%', left_out).group(1),
-            'right': re.search('(\d+)%', right_out).group(1),
+            'left': left,
+            'right': right,
             'avg': round((left + right) / 2, 2)
         }
         return response
