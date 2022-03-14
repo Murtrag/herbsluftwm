@@ -51,22 +51,40 @@ class TestBattery:
 		assert type(t) is str #@TODO time prediction should be a datetime delta rather than str
 
 
+@pytest.fixture()
+def sys_info_resource():
+	sys_info = system.SysInfo()
+	print("SysInfo: setup")
+	yield sys_info 
+	print("SysInfo: teardown ")
+
 class TestSysInfo:
 
-	def test_getMemoryUsage(self):
-		pass
+    def test_getMemoryUsage(self, sys_info_resource):
+        t = sys_info_resource.getMemoryUsage()
+        breakpoint()
+        vital_keys = {"total_memory", "used_memory", "percentage_memory", "total_swap", "used_swap"}
+        assert len(t.keys() & vital_keys) == len( vital_keys)
+        # Check if all values are numbers
 	
-	def test_getLoad(self):
-		pass
+    def test_getLoad(self, sys_info_resource):
+        t = sys_info_resource.getLoad()
+        breakpoint()
+        assert len(t) == 3, "Load should contain 3 values"
+        assert all(type(v) is float for v in t), "Values in load should be float type"
+
+    def test_getDisksInfo(self, sys_info_resource):
+        t = sys_info_resource.getDisksInfo()
+        assert 1==1
 	
-	def test_getDisksInfo(self):
-		pass
+    def test__cmd_sensors_to_dict(self, sys_info_resource):
+        pass
+        # t = sys_info_resource._SysInfo__cmd_sensors_to_dict()
+        # assert 1==1
 	
-	def test__cmd_sensors_to_dict(self):
-		pass
-	
-	def test_coresTemp(self):
-		pass
+    def test_coresTemp(self, sys_info_resource):
+        t = sys_info_resource.coresTemp()
+        assert 1==1
 
 @pytest.fixture()
 def brightness_resource():
@@ -77,13 +95,13 @@ def brightness_resource():
 
 class TestBrightness:
 	
-	def test_level_getter(self, brightness_resource):
+    def test_level_getter(self, brightness_resource):
         brightness = brightness_resource.level
         assert type(brightness) is float, "brightness level should be type of float"
-		pass
+        pass
 
-	def test_level_setter(self):
-		pass
+    def test_level_setter(self):
+        pass
 
 @pytest.fixture()
 def audio_resource():
