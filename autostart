@@ -199,6 +199,8 @@ done
 compton -b #enable opacity
 
 # cd ~/.config/herbstluftwm/dashboard
+
+cd ~/.config/herbstluftwm/dashboard
 source ~/.config/herbstluftwm/dashboard/env/bin/activate
 export FLASK_APP=~/.config/herbstluftwm/dashboard/settings
 flask run &
