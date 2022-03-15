@@ -2,5 +2,6 @@ dashboard/env
 __pycache__/
 **/__pycache__/
 *.pyc
+*.swp
 dashboard/prep_env.sh
 
