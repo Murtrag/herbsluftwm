@@ -18,7 +18,6 @@ with open('../autostart') as autostart:
 	colors = {
 		key:val.strip("'") for key,val in founded_pairs
 	}
-	print(wallpaper)
 
 # def _extractVariable(var_name):
 	# (\#[0-9a-f]{6}) html color
