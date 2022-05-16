@@ -1,7 +1,8 @@
-# herbstluftwm
+# Herbstluftwm
 The actual code of the dashboard is in the dashboard folder
+# Screens
 
-# installation
+# Installation
 
 
 # sudo dnf install aterm
